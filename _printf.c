@@ -4,6 +4,7 @@
  * _printf - function to print s, c, % specifiers.
  * @format: argument
  *
+ *
  * Return: count
  */
 int _printf(const char *format, ...)
