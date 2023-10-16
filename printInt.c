@@ -4,7 +4,7 @@
  * @format: argument
  * Return: count
  */
-int _print_int(const char *format, ...)
+int printInt(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
