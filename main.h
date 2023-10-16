@@ -7,5 +7,5 @@
 
 int _printf(const char *format, ...);
 int print_int(va_list);
-
+int _print(const char *format, ...);
 #endif
