@@ -46,4 +46,6 @@ int printInt(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
+
+}
 }
