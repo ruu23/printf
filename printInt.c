@@ -1,15 +1,19 @@
 #include "main.h"
 /**
- * _print_int - function to print d,i specifiers.
- * @format: argument
- * Return: count
+ * _print_int - print d, i specifiers
+ * @format: char
+ *
+ * Return: 0
  */
 int _print_int(const char *format, ...)
 {
 	va_list args;
-	int count = 0;
+	int count;
+	int num;
+	char buffer[];
 
 	va_start(args, format);
+	count = 0;
 	while (*format)
 	{
 		if (*format != '%')
@@ -22,25 +26,22 @@ int _print_int(const char *format, ...)
 			format++;
 			if (*format == 'd' || *format == 'i')
 			{
-				int num = va_arg(args, int);
-				char buffer[12];
-				int length = 0;
-
-				if (num < 0)
+				buffer[12];
+				num = va_arg(args, int), neg = 0, length = 0;
+				if ((num < 0) && (neg == 1))
 				{
 					write(1, "-", 1);
 					count++;
 					num = -num;
 				}
-				do {
-					buffer[length++] = '0' + (num % 10);
+				while (num > 0 && (buffer[length++] = '0' + num % 10))
 					num /= 10;
-				} while (num > 0);
 				while (length > 0)
 				{
-					write(1, &buffer[--length], 1);
+					write(1, buffer + --length, 1);
 					count++;
 				}
+			}
 		}
 		format++;
 	}
