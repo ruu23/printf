@@ -40,6 +40,18 @@ int _printf(const char *format, ...)
 				write(1, "%", 1);
 				count++;
 			}
+			else if(*format == 'd' || *format == 'i')
+		       	{
+
+                               int integer = va_arg(args, int);
+                               int len = snprintf(NULL, 0, "%d", integer);
+                               char buffer[len + 1];
+                               snprintf(buffer, len + 1, "%d", integer);
+
+                               write(1, buffer, len);
+                               count += len;
+
+                        }
 		}
 		format++;
 	}
