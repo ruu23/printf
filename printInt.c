@@ -38,8 +38,8 @@ int _print_int(const char *format, ...)
 				} while (num > 0);
 				while (length > 0)
 				{
-						write(1, &buffer[--length], 1);
-						count++;
+					write(1, &buffer[--length], 1);
+					count++;
 				}
 		}
 		format++;
