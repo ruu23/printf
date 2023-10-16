@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _print_int - function to print d,i specifiers.
+ * printInt - function to print d,i specifiers.
  * @format: argument
  * Return: count
  */
