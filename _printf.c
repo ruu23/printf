@@ -43,7 +43,7 @@ int _printf(const char *format, ...)
 			else if (*format == 'd' || *format == 'i')
                         {
    				 int num = va_arg(args, int);
-   				 char buffer[12];  // Assuming maximum integer value can be represented in 11 digits
+   				 char buffer[12];
   			         int length = 0;
 
     				 if (num < 0)
