@@ -40,30 +40,6 @@ int _printf(const char *format, ...)
 				write(1, "%", 1);
 				count++;
 			}
-			else if (*format == 'd' || *format == 'i')
-			{
-   				 int num = va_arg(args, int);
-   				 char buffer[12];
-   				 int length = 0;
-
-   				 if (num < 0)
-   				 {
-       				     write(1, "-", 1);
-       				     count++;
-       				     num = -num;
-                                 }
-
-			         do {
-       				     buffer[length++] = '0' + (num % 10);
-       				     num /= 10;
- 				    } while (num > 0);
-
-				      while (length > 0)
-                                      {
-     					    write(1, &buffer[--length], 1);
-       					    count++;
-   				      }
-				    }
 		}
 		format++;
 	}
