@@ -2,7 +2,7 @@
 /**
 <<<<<<< HEAD
  * _print_int - print d, i specifiers
- * @format: char
+ * @format: count
  *
  * Return: 0
 =======
@@ -16,7 +16,9 @@ int printInt(const char *format, ...)
 	va_list args;
 	int count;
 	int num;
-	char buffer[];
+	char buffer[12];
+	int neg;
+	int length;
 
 	va_start(args, format);
 	count = 0;
@@ -32,7 +34,6 @@ int printInt(const char *format, ...)
 			format++;
 			if (*format == 'd' || *format == 'i')
 			{
-				buffer[12];
 				num = va_arg(args, int), neg = 0, length = 0;
 				if ((num < 0) && (neg == 1))
 				{
@@ -53,6 +54,4 @@ int printInt(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
-
-}
 }
