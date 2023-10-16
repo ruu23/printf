@@ -1,11 +1,17 @@
 #include "main.h"
 /**
+<<<<<<< HEAD
  * _print_int - print d, i specifiers
  * @format: char
  *
  * Return: 0
+=======
+ * printInt - function to print d,i specifiers.
+ * @format: argument
+ * Return: count
+>>>>>>> 74126b63185c792b2c043a38a5114727576bf49e
  */
-int _print_int(const char *format, ...)
+int printInt(const char *format, ...)
 {
 	va_list args;
 	int count;
@@ -47,4 +53,6 @@ int _print_int(const char *format, ...)
 	}
 	va_end(args);
 	return (count);
+
+}
 }
