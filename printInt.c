@@ -9,7 +9,7 @@ int printInt(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	int length;
+	int length = 0;
 	char buffer[12];
 	int num;
 
