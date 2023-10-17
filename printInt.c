@@ -25,8 +25,9 @@ int printInt(const char *format, ...)
 		else
 		{
 			format++;
-			if (*format == 'd' || *format == 'i')
+			if (*format != 'd' && *format != 'i')
 			{
+				continue;
 				num = va_arg(args, int);
 				if ((num < 0) && (neg == 1))
 					write(1, "-", 1), count++;
