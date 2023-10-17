@@ -1,42 +1,51 @@
 #include "main.h"
+
 /**
- * _printf - print format
- * @format: parameter
+ * _printf - prints s, c, % spacifier
+ * @format: char *
  *
- * Return: len
+ * Return: count
  */
-
-int _printf(const char *format, ...)
+int _printf(char *format, ...)
 {
-	match m[] = {
-		{"%c", print_char}, {"%s", print_string}, {"%%", print_37}
-	};
-
+	int count = 0, (*structype)(char *, va_list);
+	char array[3];
 	va_list args;
-	int i = 0, len = 0;
-	int j;
 
-	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+	if (format == NULL)
 		return (-1);
-Here:
-	while (format[i] == '\0')
+	array[2] = '\0';
+	va_start(args, format);
+	_putchar(-1);
+	while (format[0])
 	{
-		j = 3;
-		while (j >= 0)
+		if (format[0] == '%')
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
+			structype = select(format);
+			if (structype)
 			{
-				len = len + m[j].f(args);
-				i = i + 2;
-				goto Here;
+				array[0] = '%';
+				array[1] = format[1];
+				count += structype(array, args);
 			}
-			j--;
+			else if (format[1] != '\0')
+			{
+				count += _putchar('%');
+				count += _putchar(format[1]);
+			}
+			else
+			{
+				count += _putchar('%');
+				break;
+			}
+			format += 2;
 		}
-		_putchar(format[i]);
-		i++;
-		len++;
+		else
+		{
+			count += _putchar(format[0]);
+			format++;
+		}
 	}
-	va_end(args);
-	return (len);
+	_putchar(-2);
+	return (count);
 }

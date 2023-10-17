@@ -5,18 +5,25 @@
 #include <unistd.h>
 #include <string.h>
 
-typedef struct format
-{
-	char *id;
-	int (*f)();
-}match;
+/**
+ * struct structprint - structure
+ * @array: ptr
+ * @x: type
+ *
+ * Return: int
+ */
 
+typedef struct structprint
+{
+	char *array;
+	int (*x)(char *format, va_list);
+} structype;
 int _putchar(char c);
-int print_char(va_list args);
-int print_string(va_list args);
-int _strlen(char *s);
-int _strlenc(const char *s);
-int print_37(void);
-int _printf(const char *format, ...);
+int _puts(char *string);
+int print_char(char *format, va_list);
+int print_string(char *format, va_list);
+int print_37(char *format, va_list args);
+int (*select(char *format))(char *format, va_list);
+int _printf(char *format, ...);
 int printInt(const char *format, ...);
 #endif
