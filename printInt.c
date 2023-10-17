@@ -27,7 +27,6 @@ int printInt(const char *format, ...)
 			if (*format == 'd' || *format == 'i')
 			{
 				num = va_arg(args, int);
-				length = 0;
 				if (num < 0)
 					write(1, "-", 1), count++;
 				while ((num > 0) && (buffer[length++] = '0' + num % 10))
