@@ -1,40 +1,49 @@
 #include "main.h"
-/**
- * _printf - print format
- * @format: parameter
- *
- * Return: len
- */
 
+/**
+ * _printf - function to print s, c, % specifiers.
+ * @format: argument
+ *
+ *
+ * Return: count
+ */
 int _printf(const char *format, ...)
 {
-	match m[] = {
-		{"%c", print_char}, {"%s", print_string}, {"%%", print_37}
-	};
-
+	char c;
+	const char *s;
 	va_list args;
-	int i = 0, len = 0;
-	int j;
+	int count = 0;
 
 	va_start(args, format);
-	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (-1);
-	while (format[i] == '\0')
+	while (*format)
 	{
-		j = 3;
-		while (j >= 0)
+		if (*format != '%')
 		{
-			if (m[j].id[0] == format[i] && m[j].id[1] == format[i + 1])
-			{
-				len = len + m[j].f(args);
-				i = i + 2;
-			}
-			j--;
+			write(1, format, 1);
+			count++;
 		}
-		_putchar(format[i]);
-		i++;
-		len++;
+		else
+		{
+			format++;
+			if (*format == 'c')
+			{
+				c = va_arg(args, int);
+				write(1, &c, 1);
+				count++;
+			}
+			else if (*format == 's')
+			{
+				s = va_arg(args, char *);
+				count += write(1, s, strlen(s));
+			}
+			else if (*format == '%')
+			{
+				write(1, "%", 1);
+				count++;
+			}
+		}
+		format++;
 	}
 	va_end(args);
-	return (len);
+	return (count);
 }

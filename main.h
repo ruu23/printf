@@ -24,6 +24,6 @@ int print_char(char *format, va_list);
 int print_string(char *format, va_list);
 int print_37(char *format, va_list args);
 int (*select(char *format))(char *format, va_list);
-int _printf(char *format, ...);
+int _printf(const char *format, ...);
 int printInt(const char *format, ...);
 #endif
