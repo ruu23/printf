@@ -29,6 +29,8 @@ int printInt(const char *format, ...)
 			{
 				continue;
 				num = va_arg(args, int);
+				if (num == NULL)
+					return (-1);
 				if ((num < 0) && (neg == 1))
 					write(1, "-", 1), count++;
 				while ((num > 0) && (buffer[length++] = '0' + num % 10))
