@@ -9,10 +9,10 @@ int printInt(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
-	int length;
+	int length = 0;
 	char buffer[12];
 	int num;
-	int neg;
+	int neg = 0;
 
 	va_start(args, format);
 	while (*format)
@@ -28,7 +28,6 @@ int printInt(const char *format, ...)
 			if (*format == 'd' || *format == 'i')
 			{
 				num = va_arg(args, int);
-				neg = 0, length = 0;
 				if ((num < 0) && (neg == 1))
 					write(1, "-", 1), count++;
 				while ((num > 0) && (buffer[length++] = '0' + num % 10))
